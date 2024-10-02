@@ -25,4 +25,10 @@ class LotCreateRequest extends FormRequest
             'lot_number' => ['required', 'string', 'max:200']
         ];
     }
+
+    public function messages(){
+        return[
+            'lot_number.required' => 'Nomor lot tidak boleh kosong'
+        ];
+    }
 }

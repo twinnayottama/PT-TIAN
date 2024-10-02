@@ -7,10 +7,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Data Lot</h1>
+            <h1>Halaman Data Lot</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item"><a href="{{ route('lot.index') }}">Lot</a></div>
-                <div class="breadcrumb-item">Index</div>
+                <div class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+                <div class="breadcrumb-item">Lot</div>
             </div>
         </div>
 
