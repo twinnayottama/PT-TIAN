@@ -17,6 +17,7 @@ class DashboardController extends Controller
         $lotCount = Lot::where('user_id', $userId)->count();
         $labelCount = Label::where('user_id', $userId)->count();
         $qrcodeCount = Code::where('user_id', $userId)->count();
+        $lots = Lot::where('user_id', $userId)->withCount('label')->with(['firstLabel', 'lastLabel'])->get();
 
         // Data Card
         $cards = [
@@ -39,6 +40,6 @@ class DashboardController extends Controller
                 'value' => $qrcodeCount,
             ],
         ];
-        return view('user.dashboard.index', compact('cards'));
+        return view('user.dashboard.index', compact('cards', 'lots'));
     }
 }

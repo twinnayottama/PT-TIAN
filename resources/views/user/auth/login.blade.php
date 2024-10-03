@@ -69,6 +69,10 @@
                                         </button>
                                     </div>
                                 </form>
+
+                                <p style="text-align: center">Pengguna admin? <a
+                                        href="{{ route('admin.login') }}">Login</a>
+                                </p>
                             </div>
                         </div>
                     </div>

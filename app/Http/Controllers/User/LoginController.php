@@ -23,8 +23,9 @@ class LoginController extends Controller
 
         if ($request->user()->role === 'admin') {
             Auth::logout();
-            session()->flash('error', "Login untuk admin tidak diizinkan di halaman ini.");
-            return redirect()->back();
+            return back()->withErrors([
+                'email' => 'Login untuk admin tidak diizinkan di halaman ini.',
+            ]);
         }
 
         session()->flash('success', "Berhasil masuk aplikasi");
