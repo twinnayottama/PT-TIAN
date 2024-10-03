@@ -3,6 +3,7 @@
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class LotUpdateRequest extends FormRequest
 {
@@ -21,8 +22,16 @@ class LotUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        $userId = $this->route('lot');
         return [
-            'lot_number' => ['required', 'string', 'max:200']
+            'lot_number' => ['required', 'string', 'max:200', Rule::unique('lots', 'lot_number')->ignore($userId)]
+        ];
+    }
+
+    public function messages(){
+        return[
+            'lot_number.required' => 'Nomor lot tidak boleh kosong',
+            'lot_number.unique' => 'Nomor lot sudah di tambahkan'
         ];
     }
 }

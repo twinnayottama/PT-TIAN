@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\LotCreateRequest;
 use App\Http\Requests\User\LotUpdateRequest;
 use App\Models\Lot;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LotController extends Controller
@@ -18,7 +17,7 @@ class LotController extends Controller
     {
         $userId = Auth::id();
 
-        $lots = Lot::where('user_id', $userId)->get();
+        $lots = Lot::select('id', 'lot_number', 'created_at')->where('user_id', $userId)->get();
         return view('user.lot.index', compact('lots'));
     }
 
@@ -91,15 +90,15 @@ class LotController extends Controller
         try {
             $lot = Lot::findOrFail($id);
 
-            $originalValues = $lot->only(['lot_number']);
-            $newValues = $request->only(['lot_number']);
+            $lots = $request->all();
+            $lot->fill($lots);
 
-            if ($originalValues == $newValues) {
-                session()->flash('success', 'Berhasil menambahkan nomor lot');
+            if ($lot->isDirty()) {
+                $lot->save();
+                session()->flash('success', 'Berhasil menambahkan data lot');
                 return response()->json(['success' => true], 200);
             } else {
-                $lot->update($newValues);
-                session()->flash('success', "Anda telah melakukan perubahan data");
+                session()->flash('info', "Tidak melakukan perubahan pada data lot");
                 return response()->json(['success' => true], 200);
             }
         } catch (\Exception $e) {
@@ -117,7 +116,7 @@ class LotController extends Controller
             $lot = Lot::findOrFail($id);
             $lot->delete();
 
-            return response(['status' => 'success', 'message' => 'Anda berhasil menghapus data']);
+            return response(['status' => 'success', 'message' => 'Berhasil menghapus data lot']);
         } catch (\Exception $e) {
             return response(['status' => 'error', 'message' => $e->getMessage()]);
         }

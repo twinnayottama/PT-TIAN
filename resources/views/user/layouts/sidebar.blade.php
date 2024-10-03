@@ -12,7 +12,7 @@
                     href="{{ route('dashboard') }}"><i class="fas fa-fire"></i><span>Dashboard</span></a></li>
             <li class="menu-header">Starter</li>
             <li
-                class="{{ request()->routeIs('lot.index') || request()->routeIs('lot.create') || request()->routeIs('lot.show') ? 'active' : '' }}">
+                class="{{ request()->routeIs('lot.index') || request()->routeIs('lot.create') || request()->routeIs('lot.show') || request()->routeIs('lot.edit') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('lot.index') }}"><i
                         class="far fa-solid fa-sheet-plastic"></i><span>Lot</span></a>
             </li>

@@ -22,13 +22,14 @@ class LotCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'lot_number' => ['required', 'string', 'max:200']
+            'lot_number' => ['required', 'string', 'max:200', 'unique:lots,lot_number']
         ];
     }
 
     public function messages(){
         return[
-            'lot_number.required' => 'Nomor lot tidak boleh kosong'
+            'lot_number.required' => 'Nomor lot tidak boleh kosong',
+            'lot_number.unique' => 'Nomor lot sudah di tambahkan'
         ];
     }
 }

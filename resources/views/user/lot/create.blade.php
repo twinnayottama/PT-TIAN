@@ -1,7 +1,7 @@
 @extends('user.layouts.master')
 
 @section('title-page')
-    Tambah Lot
+    Create
 @endsection
 
 @section('content')
