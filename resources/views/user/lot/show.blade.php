@@ -55,6 +55,14 @@
             </div>
         </div>
     </section>
+
+    <!-- Full-page loader -->
+    <div class="loader-wrapper">
+        <div class="loader-container">
+            <div class="loader"></div>
+            <h4 class="loader-text">Mohon tunggu sebentar, proses download sedang dilakukan...</h4>
+        </div>
+    </div>
 @endsection
 
 @push('scripts')
@@ -88,7 +96,9 @@
                 },
             ]
         });
+    </script>
 
+    <script>
         $(document).ready(function() {
             $('.download-pdf-form').on('submit', function(event) {
                 event.preventDefault();
@@ -96,7 +106,9 @@
                 var form = $(this);
                 var formData = form.serialize();
                 var button = form.find('button[type="submit"]');
-                button.prop('disabled', true).text('Loading...');
+
+                // Tampilkan full-page loader
+                $('.loader-wrapper').fadeIn();
 
                 $.ajax({
                     url: "{{ route('lot.downloadPdf', ['id' => $lot->id]) }}",
@@ -113,7 +125,6 @@
                         link.download = filename;
                         link.click();
                         sessionStorage.setItem('success', 'File berhasil diunduh.');
-                        location.reload();
                     },
                     error: function(response) {
                         var message = response.responseJSON.warning || response.responseJSON
@@ -122,6 +133,8 @@
                             '</div>');
                     },
                     complete: function() {
+                        // Sembunyikan loader setelah selesai
+                        $('.loader-wrapper').fadeOut();
                         button.prop('disabled', false).text('Download PDF');
                     }
                 });
