@@ -28,4 +28,14 @@ class AccountCreateRequest extends FormRequest
             'role' => ['required', 'in:user,admin']
         ];
     }
+
+    public function messages(){
+        return[
+            'name.required' => "Nama pengguna tidak boleh kosong",
+            'email.required' => 'Email tidak boleh kosong',
+            'email.unique' => 'Email sudah di tambahkan',
+            'password.required' => 'Password tidak boleh kosong',
+            'role.required' => 'Role tidak boleh kosong'
+        ];
+    }
 }

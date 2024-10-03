@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AccountCreateRequest;
+use App\Http\Requests\Admin\AccountUpdateRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminAccountController extends Controller
 {
@@ -64,17 +65,26 @@ class AdminAccountController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AccountUpdateRequest $request, string $id)
     {
         try {
             $user = User::findOrFail($id);
 
-            // Update hanya password
-            $user->update([
-                'password' => bcrypt($request->input('password'))
-            ]);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->role = $request->role;
 
-            session()->flash('success', 'Berhasil memperbarui kata sandi pengguna');
+            if ($request->filled('password')) {
+                $user->password = Hash::make($request->password);
+            }
+
+            // Check if any changes were made
+            if ($user->isDirty()) {
+                $user->save();
+                session()->flash('success', 'Berhasil memperbarui data pengguna');
+            } else {
+                session()->flash('info', 'Tidak melakukan perubahan data pengguna');
+            }
         } catch (\Exception $e) {
             session()->flash('error', "Terdapat kesalahan" . $e->getMessage());
         }

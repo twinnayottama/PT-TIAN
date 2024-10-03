@@ -1,19 +1,24 @@
 @extends('admin.layouts.master')
 
 @section('title-page')
-    Create
+    Tambah
 @endsection
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Tambah Pengguna</h1>
+            <h1>Tambah Manajemen Pengguna</h1>
+            <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
+                <div class="breadcrumb-item"><a href="{{ route('admin.account.index') }}">Pengguna</a></div>
+                <div class="breadcrumb-item">Create</div>
+            </div>
         </div>
 
         <div class="section-body">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h4>Tambah Pengguna</h4>
+                    <h4>Tambah Manajemen Pengguna</h4>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.account.store') }}" method="POST">
@@ -23,7 +28,7 @@
                             <label for="name">Nama</label>
                             <input type="text" id="name" name="name"
                                 class="form-control @error('name') is-invalid @enderror"
-                                placeholder="Masukkan nama pengguna" value="{{ old('name') }}" autofocus>
+                                placeholder="Masukkan Nama Pengguna" value="{{ old('name') }}" autofocus>
                             @error('name')
                                 <div class="text-danger">*{{ $message }}</div>
                             @enderror
@@ -59,7 +64,7 @@
                             @enderror
                         </div>
 
-                        <button class="btn btn-primary mr-2" type="submit">Buat</button>
+                        <button class="btn btn-primary mr-2" type="submit">Tambah</button>
                         <a href="{{ route('admin.account.index') }}" class="btn btn-warning">Kembali</a>
                     </form>
                 </div>
@@ -67,6 +72,3 @@
         </div>
     </section>
 @endsection
-
-@push('scripts')
-@endpush

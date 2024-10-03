@@ -65,6 +65,9 @@
                                         </button>
                                     </div>
                                 </form>
+
+                                <p style="text-align: center">Pengguna user? <a href="{{ route('login') }}">Login</a>
+                                </p>
                             </div>
                         </div>
                     </div>

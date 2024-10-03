@@ -10,11 +10,11 @@
             <li class="menu-header">Dashboard</li>
             <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><a class="nav-link"
                     href="{{ route('admin.dashboard') }}"><i class="fas fa-fire"></i><span>Dashboard</span></a></li>
-            <li class="menu-header">Starter</li>
+            <li class="menu-header">Pengguna</li>
             <li
                 class="{{ request()->routeIs('admin.account.index') || request()->routeIs('admin.account.create') || request()->routeIs('admin.account.edit') ? 'active' : '' }}">
                 <a href="{{ route('admin.account.index') }}" class="nav-link"><i
-                        class="fas fa-person"></i><span>Pengguna</span></a>
+                        class="fas fa-solid fa-user"></i><span>Manajemen Pengguna</span></a>
             </li>
         </ul>
     </aside>
