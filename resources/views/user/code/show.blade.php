@@ -1,14 +1,15 @@
 @extends('user.layouts.master')
 
 @section('title-page')
-    Show QRCode
+    Show
 @endsection
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Show QRCode</h1>
+            <h1>Lihat Data QRCode</h1>
             <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></div>
                 <div class="breadcrumb-item"><a href="{{ route('code.index') }}">QRCode</a></div>
                 <div class="breadcrumb-item">Show</div>
             </div>
@@ -17,7 +18,7 @@
         <div class="section-body">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h4>Show QRCode</h4>
+                    <h4>Lihat Data QRCode</h4>
 
                     <div class="card-header-action">
                         <form action="{{ route('code.destroy', $lot->id) }}" method="POST" id="delete-all-form">

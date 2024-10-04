@@ -49,7 +49,7 @@ class CodeController extends Controller
 
     public function show(Lot $lot)
     {
-        $codes = Code::where('lot_id', $lot->id)->get();
+        $codes = Code::select('id', 'token', 'serial_number')->where('lot_id', $lot->id)->get();
         return view('user.code.show', compact('lot', 'codes'));
     }
 
@@ -60,7 +60,7 @@ class CodeController extends Controller
 
             Code::where('lot_id', $lot->id)->delete();
 
-            session()->flash('success', "Berhasil menghapus data");
+        session()->flash('success', "Berhasil menghapus data QRCode");
         } catch (\Exception $e) {
             session()->flash('error', "Terdapat kesalahan" . $e->getMessage());
         }

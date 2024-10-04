@@ -1,14 +1,15 @@
 @extends('user.layouts.master')
 
 @section('title-page')
-    Create Qrcode
+    Create
 @endsection
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Tambah Data Qrcode</h1>
+            <h1>Tambah Data QRCode</h1>
             <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></div>
                 <div class="breadcrumb-item"><a href="{{ route('code.index') }}">QRCode</a></div>
                 <div class="breadcrumb-item">Create</div>
             </div>
@@ -27,8 +28,8 @@
                         <div class="form-group">
                             <label for="lot_id">Nomor Lot <span class="text-danger">(Seperti yang anda masukkan di
                                     lot)</span></label>
-                            <select name="lot_id" id="lot_id"
-                                class="form-control @error('lot_id') is-invalid @enderror">
+                            <select name="lot_id" id="lot_id" class="form-control @error('lot_id') is-invalid @enderror"
+                                required>
                                 <option value="">-- Pilih Nomor Lot --</option>
                                 @foreach ($lots as $lot)
                                     <option value="{{ $lot->id }}">{{ $lot->lot_number }}</option>
@@ -72,14 +73,14 @@
                     success: function(response) {
                         if (response.success) {
                             sessionStorage.setItem('success',
-                                'Berhasil menambahkan data label');
-                            window.location.href = "{{ route('label.index') }}";
+                                'Berhasil menambahkan data QRCode');
+                            window.location.href = "{{ route('code.index') }}";
                         }
                     },
                     error: function(response) {
                         if (response.responseJSON.error) {
                             sessionStorage.setItem('error', response.responseJSON.error);
-                            window.location.href = "{{ route('label.index') }}";
+                            window.location.href = "{{ route('code.index') }}";
                         }
                     },
                     complete: function() {

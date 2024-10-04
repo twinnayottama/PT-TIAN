@@ -7,10 +7,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Data QRCode</h1>
+            <h1>Halaman Data QRCode</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item"><a href="{{ route('code.index') }}">QRCode</a></div>
-                <div class="breadcrumb-item">Index</div>
+                <div class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+                <div class="breadcrumb-item">QRCode</div>
             </div>
         </div>
 
@@ -26,32 +26,34 @@
                 </div>
 
                 <div class="card-body">
-                    <table id="example" class="ui selectable celled table" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nomor lot</th>
-                                <th>Jumlah QRCode</th>
-                                <th>Nomor seri QRCode</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($lots as $lot)
+                    <div style="overflow-x: auto;">
+                        <table id="example" class="ui selectable celled table" style="width:100%">
+                            <thead>
                                 <tr>
-                                    <td>{{ ++$loop->index }}</td>
-                                    <td>{{ $lot->lot_number }}</td>
-                                    <td>{{ $lot->code_count }}</td>
-                                    <td>{{ $lot->firstCode ? $lot->firstCode->serial_number : '' }} -
-                                        {{ $lot->lastCode ? $lot->lastCode->serial_number : '' }}</td>
-                                    <td>
-                                        <a href="{{ route('code.show', $lot->id) }}" class="btn btn-warning mr-2 mb-2"><i
-                                                class="fas fa-eye"></i></a>
-                                    </td>
+                                    <th>No</th>
+                                    <th>Nomor lot</th>
+                                    <th>Jumlah QRCode</th>
+                                    <th>Nomor seri QRCode</th>
+                                    <th>Aksi</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($lots as $lot)
+                                    <tr>
+                                        <td>{{ ++$loop->index }}</td>
+                                        <td>{{ $lot->lot_number }}</td>
+                                        <td>{{ $lot->code_count }}</td>
+                                        <td>{{ $lot->firstCode ? $lot->firstCode->serial_number : '' }} -
+                                            {{ $lot->lastCode ? $lot->lastCode->serial_number : '' }}</td>
+                                        <td>
+                                            <a href="{{ route('code.show', $lot->id) }}"
+                                                class="btn btn-warning mr-2 mb-2"><i class="fas fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,14 +89,6 @@
                     className: "dt-body-center",
                     targets: [0, 1, 2, 3, 4]
                 },
-                {
-                    width: '12%',
-                    targets: 0
-                },
-                {
-                    width: '20%',
-                    targets: 2
-                }
             ]
         });
     </script>
