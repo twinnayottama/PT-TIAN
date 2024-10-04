@@ -75,7 +75,7 @@ class LabelController extends Controller
 
     public function show(Lot $lot)
     {
-        $labels = Label::where('lot_id', $lot->id)->get();
+        $labels = Label::select('id', 'serial_number', 'seed_producers', 'seed_class', 'varieties')->where('lot_id', $lot->id)->get();
         return view('user.label.show', compact('lot', 'labels'));
     }
 

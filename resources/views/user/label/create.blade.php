@@ -1,7 +1,7 @@
 @extends('user.layouts.master')
 
 @section('title-page')
-    Create Label
+    Create
 @endsection
 
 @section('content')
@@ -9,6 +9,7 @@
         <div class="section-header">
             <h1>Tambah Data Label</h1>
             <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></div>
                 <div class="breadcrumb-item"><a href="{{ route('label.index') }}">Label</a></div>
                 <div class="breadcrumb-item">Create</div>
             </div>

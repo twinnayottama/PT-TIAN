@@ -1,14 +1,15 @@
 @extends('user.layouts.master')
 
 @section('title-page')
-    Show Label
+    Show
 @endsection
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Show Data Label</h1>
+            <h1>Lihat Data Label</h1>
             <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></div>
                 <div class="breadcrumb-item"><a href="{{ route('label.index') }}">Label</a></div>
                 <div class="breadcrumb-item">Show</div>
             </div>
@@ -17,7 +18,7 @@
         <div class="section-body">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h4>Show Data Label</h4>
+                    <h4>Lihat Data Label</h4>
 
                     <div class="card-header-action">
                         <form action="{{ route('label.destroy', $lot->id) }}" method="POST" id="delete-all-form">
@@ -32,32 +33,34 @@
                 </div>
 
                 <div class="card-body">
-                    <table id="example" class="ui selectable celled table" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>No. Seri Label</th>
-                                <th>Produsen Benih</th>
-                                <th>Kelas Benih</th>
-                                <th>Varietas</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                                $counter = 1;
-                            @endphp
-                            @foreach ($labels as $label)
+                    <div style="overflow-x: auto;">
+                        <table id="example" class="ui selectable celled table" style="width:100%">
+                            <thead>
                                 <tr>
-                                    <td>{{ $counter++ }}</td>
-                                    <td>{{ $label->serial_number }}</td>
-                                    <td>{{ $label->seed_producers }}</td>
-                                    <td>{{ $label->seed_class }}</td>
-                                    <td>{{ $label->varieties }}</td>
+                                    <th>No</th>
+                                    <th>No. Seri Label</th>
+                                    <th>Produsen Benih</th>
+                                    <th>Kelas Benih</th>
+                                    <th>Varietas</th>
+
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $counter = 1;
+                                @endphp
+                                @foreach ($labels as $label)
+                                    <tr>
+                                        <td>{{ $counter++ }}</td>
+                                        <td>{{ $label->serial_number }}</td>
+                                        <td>{{ $label->seed_producers }}</td>
+                                        <td>{{ $label->seed_class }}</td>
+                                        <td>{{ $label->varieties }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,10 +95,6 @@
                 {
                     className: "dt-body-center",
                     targets: [0, 1, 2, 3, 4]
-                },
-                {
-                    width: '10%',
-                    targets: 0
                 },
             ]
         });
