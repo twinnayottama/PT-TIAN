@@ -72,6 +72,11 @@
                 transform: rotate(360deg);
             }
         }
+
+        /* Disable scrolling */
+        body.no-scroll {
+            overflow: hidden;
+        }
     </style>
 
 </head>

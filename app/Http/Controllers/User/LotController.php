@@ -42,7 +42,7 @@ class LotController extends Controller
             $lot->user_id = $userId;
             $lot->save();
 
-            session()->flash('success', 'Berhasil menambahkan nomor lot');
+            session()->flash('success', 'Berhasil menambahkan data lot');
             return response()->json(['success' => true], 200);
         } catch (\Exception $e) {
             session()->flash('error', $e->getMessage());
@@ -95,7 +95,7 @@ class LotController extends Controller
 
             if ($lot->isDirty()) {
                 $lot->save();
-                session()->flash('success', 'Berhasil menambahkan data lot');
+                session()->flash('success', 'Berhasil melakukan perubahan data lot');
                 return response()->json(['success' => true], 200);
             } else {
                 session()->flash('info', "Tidak melakukan perubahan pada data lot");

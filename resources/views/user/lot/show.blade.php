@@ -19,6 +19,11 @@
             <div class="card card-primary">
                 <div class="card-header">
                     <h4>Download Label Biru</h4>
+                    <div class="card-header-action">
+                        <a href="{{ route('lot.index') }}" class="btn btn-warning">
+                            Kembali
+                        </a>
+                    </div>
                 </div>
 
                 <div class="card-body">
@@ -109,6 +114,7 @@
 
                 // Tampilkan full-page loader
                 $('.loader-wrapper').fadeIn();
+                $('body').addClass('no-scroll');
 
                 $.ajax({
                     url: "{{ route('lot.downloadPdf', ['id' => $lot->id]) }}",
