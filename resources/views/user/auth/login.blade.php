@@ -28,7 +28,7 @@
                         <div class="login-brand">
                             <img src="{{ asset('assets/img/logo.png') }}" alt="logo" width="100"
                                 class="shadow-light rounded-circle">
-                            <h4 class="mt-3">Sistem Label TWINN</h4>
+                            <h4 class="mt-3">Sistem Label TWINN 1</h4>
                         </div>
 
                         <div class="card card-primary">
