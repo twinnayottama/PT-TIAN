@@ -1,6 +1,6 @@
 # Label-Twinn
 
-**Label-Twinn** is a Laravel-based application designed to generate and print blue labels for packaging products at **PT Tunas Widji Inti Nayottama**.
+**Label-Twinn** adalah aplikasi berbasis Laravel yang dirancang untuk menghasilkan dan mencetak label biru untuk produk kemasan di **PT Tunas Widji Inti Nayottama**.
 
 ## Table of Contents
 - [Features](#features)
@@ -12,19 +12,18 @@
 - [License](#license)
 
 ## Features
-- Generate blue labels for product packaging.
-- Customizable label format based on product details.
-- Export and print labels in PDF format.
-- User-friendly interface to manage label data.
+- Membuat label biru untuk kemasan produk.
+- Format label yang dapat disesuaikan berdasarkan detail produk.
+- Mengekspor dan mencetak label dalam format PDF.
+- Antarmuka yang mudah digunakan untuk mengelola data label.
   
 ## Requirements
-Before you begin, ensure you have met the following requirements:
+Sebelum memulai, pastikan Anda telah memenuhi persyaratan berikut:
 - **PHP** >= 8.0
 - **Composer** (PHP Dependency Manager)
-- **Laravel** 9.x
+- **Laravel** 10.x
 - **MySQL** (or any other supported database)
-- **Node.js** & **NPM** for frontend assets
-- A web server such as **Apache** or **Nginx**
+- A web server such as **Apache** with **Laragon**
 
 ## Installation
 Follow these steps to install the project locally:
@@ -41,8 +40,7 @@ Follow these steps to install the project locally:
       ```bash
      npm install && npm run dev
 3. **Set Up Environment: Copy the .env.example to create a .env file:**
-   ```bash
-   cp .env.example .env
-- Update the following fields in .env:
-- Database credentials (DB_DATABASE, DB_USERNAME, DB_PASSWORD)
-- Other environment-specific settings
+   - Set Up Environment
+     ```bash
+     cp .env.example .env
+   - sSett
