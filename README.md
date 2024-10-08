@@ -42,7 +42,8 @@ Follow these steps to install the project locally:
      npm install && npm run dev
 3. **Set Up Environment: Copy the .env.example to create a .env file:**
    ```bash
-   cp .env.example .env```
+   cp .env.example .env
+   bash```
    Update the following fields in .env:
    - Database credentials (DB_DATABASE, DB_USERNAME, DB_PASSWORD)
    - Other environment-specific settings
