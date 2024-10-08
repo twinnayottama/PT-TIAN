@@ -1,6 +1,6 @@
 # Label-Twinn
 
-**Label-Twinn** adalah aplikasi berbasis Laravel yang dirancang untuk menghasilkan dan mencetak label biru untuk produk kemasan di **PT Tunas Widji Inti Nayottama**.
+**Label-Twinn** is a Laravel-based application designed to generate and print blue labels for packaging products at **PT Tunas Widji Inti Nayottama**.
 
 ## Table of Contents
 - [Features](#features)
@@ -12,13 +12,13 @@
 - [License](#license)
 
 ## Features
-- Membuat label biru untuk kemasan produk.
-- Format label yang dapat disesuaikan berdasarkan detail produk.
-- Mengekspor dan mencetak label dalam format PDF.
-- Antarmuka yang mudah digunakan untuk mengelola data label.
+- Generate blue labels for product packaging.
+- Customizable label format based on product details.
+- Export and print labels in PDF format.
+- User-friendly interface to manage label data.
   
 ## Requirements
-Sebelum memulai, pastikan Anda telah memenuhi persyaratan berikut:
+Before you begin, ensure you have met the following requirements:
 - **PHP** >= 8.0
 - **Composer** (PHP Dependency Manager)
 - **Laravel** 10.x
@@ -59,4 +59,15 @@ Follow these steps to install the project locally:
    ```bash
    php artisan serve
 
+## Configuration
+**Make sure to configure the following settings in the .env file:**
+    - APP_URL: Set this to your application's URL.
+    - Database: Ensure your database connection is properly set up.
+If you're deploying this application, remember to configure the web server (Apache/Nginx) and ensure proper file permissions.
 
+## Usage
+1. **Access the Application: Once the server is running, you can access the app at:**
+   ```bash
+   http://localhost:8000
+2. **Printing Labels:**
+   - s
