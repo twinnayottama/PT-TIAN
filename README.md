@@ -40,7 +40,23 @@ Follow these steps to install the project locally:
       ```bash
      npm install && npm run dev
 3. **Set Up Environment: Copy the .env.example to create a .env file:**
-   - Set Up Environment
+   - **Set Up Environment**
      ```bash
      cp .env.example .env
-   - sSett
+   - **Update the following fields in .env:**
+     - Database credentials (DB_DATABASE, DB_USERNAME, DB_PASSWORD)
+     - Other environment-specific settings
+4. **Generate Application Key:**
+   ```bash
+   php artisan key:generate
+5. **Migrate the Database: Run migrations to create the required database tables:**
+   ```bash
+   php artisan migrate
+6. **Seed Database (Optional): If you want to populate the database with some initial data:**
+   ```bash
+   php artisan db:seed
+7. **php artisan serve**
+   ```bash
+   php artisan serve
+
+
