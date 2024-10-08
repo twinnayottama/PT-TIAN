@@ -33,3 +33,11 @@ Follow these steps to install the project locally:
    ```bash
    git clone https://github.com/your-username/label-twinn.git
    cd label-twinn
+2. **Install Dependencies:**
+   - **Install PHP dependencies via Composer:**
+     ```bash
+     composer install
+   - **Install frontend dependencies using NPM:**
+      ```bash
+     npm install && npm run dev
+   
