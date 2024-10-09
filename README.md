@@ -1,4 +1,4 @@
-xxxxxxxxxxxxxxxxx# Label-Twinn
+# Label-Twinn
 
 **Label-Twinn** is a Laravel-based application designed to generate and print blue labels for packaging products at **PT Tunas Widji Inti Nayottama**.
 
