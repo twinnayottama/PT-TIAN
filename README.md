@@ -70,4 +70,8 @@ If you're deploying this application, remember to configure the web server (Apac
    ```bash
    http://localhost:8000
 2. **Printing Labels:**
-   - s
+   - Enter the lot number first
+   - Then import the excel label on the label page
+   - Then import the excel qrcode on the qrcode page
+   - Go to show lot
+   - Download label data per 500 data
