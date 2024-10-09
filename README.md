@@ -1,4 +1,4 @@
-# Label-Twinn
+xxxxxxxxxxxxxxxxx# Label-Twinn
 
 **Label-Twinn** is a Laravel-based application designed to generate and print blue labels for packaging products at **PT Tunas Widji Inti Nayottama**.
 
@@ -75,3 +75,28 @@ If you're deploying this application, remember to configure the web server (Apac
    - Then import the excel qrcode on the qrcode page
    - Go to show lot
    - Download label data per 500 data
+3. **Managing Labels: The application provides a simple interface for adding, updating, and deleting label data.**
+
+## Deployment
+When deploying this application to a production environment, ensure that the following steps are followed:
+- Run **php artisan migrate --force** to ensure migrations are applied.
+- Set the environment to production in **.env** by changing **APP_ENV=production** and **APP_DEBUG=false**.
+- Configure cache:
+  ```bash
+  php artisan config:cache
+  php artisan route:cache
+  php artisan view:cache
+
+## Contributing
+This is a personal project so I can't contribute anything.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
+### Penjelasan:
+- **Features**: Menyebutkan fitur utama aplikasi.
+- **Requirements**: Menyertakan persyaratan minimum yang dibutuhkan untuk menjalankan aplikasi.
+- **Installation**: Memberikan langkah-langkah untuk instalasi aplikasi.
+- **Configuration**: Mengatur konfigurasi penting, seperti database dan environment.
+- **Usage**: Panduan singkat mengenai cara menggunakan aplikasi.
+- **Deployment**: Menjelaskan langkah-langkah saat aplikasi akan dipindahkan ke lingkungan produksi.
+- **Contributing** dan **License**: Bagian standar untuk kontribusi dan lisensi. 
