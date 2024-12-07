@@ -33,12 +33,7 @@ class DashboardController extends Controller
                 'title' => 'Jumlah Label',
                 'value' => $labelCount,
             ],
-            [
-                'bg_color' => 'warning',
-                'icon' => 'far fa-solid fa-qrcode',
-                'title' => 'Jumlah Qrcode',
-                'value' => $qrcodeCount,
-            ],
+
         ];
         return view('user.dashboard.index', compact('cards', 'lots'));
     }

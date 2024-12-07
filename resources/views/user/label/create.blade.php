@@ -26,10 +26,10 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="certificate_number"> Sertifikat LSSM No. <span class="text-danger text-bold">(Contoh
+                            <label for="certificate_number"> No Lot. <span class="text-danger text-bold">(Contoh
                                     pengisian:
-                                    48-LSSMBTPH)</span></label>
-                            <input type="text" name="certificate_number" placeholder="Masukkan nomor sertifikat"
+                                    16/FS-PASL14/X/2024)</span></label>
+                            <input type="text" name="certificate_number" placeholder="Masukkan No Lot."
                                 class="form-control" required>
                         </div>
 

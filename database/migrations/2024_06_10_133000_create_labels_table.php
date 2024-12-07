@@ -34,6 +34,8 @@ return new class extends Migration
             $table->decimal('btl', 8, 2)->nullable();
             $table->decimal('seed_impurities', 8, 2)->nullable();
             $table->integer('germination_power')->nullable();
+            $table->string('code_area')->nullable();
+            $table->string('no_area')->nullable();
 
             $table->timestamps();
 

@@ -67,6 +67,8 @@ class DataLabelImport implements ToCollection, WithHeadingRow
                 'btl' => $this->data['BG9'],
                 'seed_impurities' => $this->data['BH9'],
                 'germination_power' => $this->data['BI9'],
+                'code_area' => $this->data['BN9'],
+                'no_area' => $this->data['BO9'],
             ]);
             $serialNumber++; // Increment serial number for the next label
         }

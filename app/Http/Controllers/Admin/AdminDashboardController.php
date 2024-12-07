@@ -45,12 +45,7 @@ class AdminDashboardController extends Controller
                 'title' => 'Jumlah Label',
                 'value' => $labelCount,
             ],
-            [
-                'bg_color' => 'info',
-                'icon' => 'far fa-solid fa-qrcode',
-                'title' => 'Jumlah Qrcode',
-                'value' => $qrcodeCount,
-            ],
+
         ];
 
         return view('admin.dashboard.index', compact('cards', 'lots'));

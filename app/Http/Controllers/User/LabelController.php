@@ -73,6 +73,8 @@ class LabelController extends Controller
                 'BG9' => $worksheet->getCell('BG9')->getValue(),
                 'BH9' => $worksheet->getCell('BH9')->getValue(),
                 'BI9' => $worksheet->getCell('BI9')->getValue(),
+                'BN9' => $worksheet->getCell('BN9')->getValue(),
+                'BO9' => $worksheet->getCell('BO9')->getValue(),
             ];
 
             // Import data label ke database

@@ -47,7 +47,7 @@ $cards_in_current_page = 0;
             margin-right: 5px;
             margin-top: 0;
             position: absolute;
-            left: 0;
+            left: 10px;
             top: 0;
         }
 
@@ -97,15 +97,16 @@ $cards_in_current_page = 0;
             width: 65%;
         }
 
+        .container-kiri {
+            float: right;
+            width: 45%;
+            margin-top: 20px;
+        }
+
         .item {
             font-size: 0.52em;
             padding: 0;
             margin-bottom: 3.5px;
-        }
-
-        .container-kiri {
-            float: right;
-            width: 40%;
         }
 
         .clearfix::after {
@@ -177,8 +178,9 @@ $cards_in_current_page = 0;
                 <div class="item">
                     <span style="display: inline-block; width: 80px; vertical-align: top;">Tgl. Selesai
                         Uji</span> : <span
-                        style="vertical-align: top;">{{ date('d-m-Y', strtotime($item->test_completion_date)) }}</span>
+                        style="vertical-align: top;">{{ date('d-M-Y', strtotime($item->test_completion_date)) }}</span>
                 </div>
+
                 <div class="item">
                     <span style="display: inline-block; width: 80px; vertical-align: top;">Asal Benih</span> :
                     <span style="vertical-align: top;">{{ $item->address }}</span>
@@ -221,12 +223,12 @@ $cards_in_current_page = 0;
                 <div class="item">
                     <span style="display: inline-block; width: 80px; vertical-align: top;">Tgl. Akhir
                         Label</span> : <span
-                        style="vertical-align: top;">{{ date('d-m-Y', strtotime($item->end_distribution_date)) }}</span>
+                        style="vertical-align: top;">{{ date('d-M-Y', strtotime($item->end_distribution_date)) }}</span>
                 </div>
                 <div class="item">
                     <span style="display: inline-block; width: 80px; vertical-align: top;">No. Seri Label</span>
                     : <span
-                        style="vertical-align: top;">{{ date('m/y', strtotime($item->test_completion_date)) }}/{{ $item->serial_number }}</span>
+                        style="vertical-align: top;">{{ $item->no_area }}/{{ date('m/y', strtotime($item->test_completion_date)) }}/{{ $item->code_area }}{{ $item->serial_number }}</span>
                 </div>
             </div>
         </div>
