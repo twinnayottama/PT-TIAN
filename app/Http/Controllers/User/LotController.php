@@ -53,12 +53,33 @@ class LotController extends Controller
     /**
      * Display the specified resource.
      */
+    // public function show(string $id)
+    // {
+    //     $lot = Lot::findOrFail($id);
+
+    //     $labelsData = $lot->getlabelsData();
+    //     $groupedData = $labelsData->chunk(500);
+
+    //     // Gabungkan data per kelompok
+    //     $displayData = [];
+    //     foreach ($groupedData as $group) {
+    //         $row = [
+    //             'start_serial_number' => $group->first()->serial_number,
+    //             'end_serial_number' => $group->last()->serial_number,
+    //         ];
+    //         $displayData[] = $row;
+    //     }
+
+    //     return view('user.lot.show', compact('lot', 'displayData'));
+    // }
+
     public function show(string $id)
     {
         $lot = Lot::findOrFail($id);
 
-        $mergedData = $lot->getMergedData();
-        $groupedData = $mergedData->chunk(500);
+        // Ambil data label yang terkait dan urutkan berdasarkan serial_number
+        $labelsData = $lot->label()->orderBy('serial_number', 'asc')->get();
+        $groupedData = $labelsData->chunk(500);
 
         // Gabungkan data per kelompok
         $displayData = [];

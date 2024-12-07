@@ -4,19 +4,12 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lot;
-use App\Services\QrCodeService;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use ZipArchive;
 
 class DownloadLabelController extends Controller
 {
-    protected $qrCodeService;
-    public function __construct(QrCodeService $qrCodeService)
-    {
-        $this->qrCodeService = $qrCodeService;
-    }
-
     public function download(string $id)
     {
         $lot = Lot::findOrFail($id);
@@ -32,8 +25,11 @@ class DownloadLabelController extends Controller
         $startSerialNumber = $request->input('start_serial_number');
         $endSerialNumber = $request->input('end_serial_number');
 
+        // Get the Lot instance
         $lot = Lot::findOrFail($id);
-        $groupedData = $lot->getMergedDataDownload($startSerialNumber, $endSerialNumber);
+
+        // Get data from labels table only (no code data)
+        $groupedData = $lot->getLabelsDataDownload($startSerialNumber, $endSerialNumber);
 
         // Check if data is empty
         if ($groupedData->isEmpty()) {
@@ -48,14 +44,6 @@ class DownloadLabelController extends Controller
 
         $pdfFiles = [];
         foreach ($chunks as $index => $chunk) {
-            // Generate QR codes for each item in the chunk
-            foreach ($chunk as $serial_number => $data) {
-                foreach ($data as $item) {
-                    $link = $item->link;
-                    $item->barcode_data_uri = $this->qrCodeService->generateQrcode($link);
-                }
-            }
-
             // Generate the PDF for the current chunk
             $pdf = Pdf::loadView('user.lot.pdf.index', [
                 'lot' => $lot,

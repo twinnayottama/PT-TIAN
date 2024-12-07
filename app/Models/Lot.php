@@ -38,39 +38,21 @@ class Lot extends Model
         return $this->hasOne(Label::class)->orderBy('serial_number', 'desc');
     }
 
-    public function code()
-    {
-        return $this->hasMany(Code::class);
-    }
-
-    public function firstCode()
-    {
-        return $this->hasOne(Code::class)->orderBy('serial_number', 'asc');
-    }
-
-    public function lastCode()
-    {
-        return $this->hasOne(Code::class)->orderBy('serial_number', 'desc');
-    }
-
-
-    public function getMergedData()
+    public function getLabelsData()
     {
         return DB::table('labels')
-            ->join('codes', 'labels.serial_number', '=', 'codes.serial_number')
-            ->where('labels.lot_id', $this->id)
-            ->orderBy('labels.serial_number')
-            ->select('labels.serial_number', 'labels.certificate_number', 'labels.varieties', 'codes.token')
+            ->where('lot_id', $this->id)
+            ->orderBy('serial_number')
+            ->select('serial_number', 'certificate_number', 'varieties')
             ->get();
     }
 
-    public function getMergedDataDownload($startSerialNumber, $endSerialNumber)
+    public function getLabelsDataDownload($startSerialNumber, $endSerialNumber)
     {
         return DB::table('labels')
-            ->join('codes', 'labels.serial_number', '=', 'codes.serial_number')
-            ->where('labels.lot_id', $this->id)
-            ->orderBy('labels.serial_number')
-            ->whereBetween('labels.serial_number', [$startSerialNumber, $endSerialNumber])
+            ->where('lot_id', $this->id)
+            ->whereBetween('serial_number', [$startSerialNumber, $endSerialNumber])
+            ->orderBy('serial_number')
             ->get()
             ->groupBy('serial_number');
     }

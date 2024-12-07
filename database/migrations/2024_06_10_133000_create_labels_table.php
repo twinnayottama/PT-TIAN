@@ -16,24 +16,24 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('lot_id');
 
-            $table->string('certificate_number');
-            $table->string('seed_producers');
-            $table->string('address');
-            $table->string('seed_class');
-            $table->string('type_plant');
-            $table->string('varieties');
-            $table->string('registration_number');
-            $table->date('harvest_date');
-            $table->date('test_completion_date');
-            $table->date('end_distribution_date');
-            $table->string('serial_number');
-            $table->integer('contents_packaging');
-            $table->decimal('water_content');
-            $table->decimal('pure_seeds');
-            $table->decimal('roomy_CVL');
-            $table->decimal('btl');
-            $table->decimal('seed_impurities');
-            $table->integer('germination_power');
+            $table->string('certificate_number')->nullable();
+            $table->string('seed_producers')->nullable();
+            $table->string('address')->nullable();
+            $table->string('seed_class')->nullable();
+            $table->string('type_plant')->nullable();
+            $table->string('varieties')->nullable();
+            $table->string('registration_number')->nullable();
+            $table->date('harvest_date')->nullable();
+            $table->date('test_completion_date')->nullable();
+            $table->date('end_distribution_date')->nullable();
+            $table->string('serial_number')->nullable();
+            $table->integer('contents_packaging')->nullable();
+            $table->decimal('water_content', 8, 2)->nullable();
+            $table->decimal('pure_seeds', 8, 2)->nullable();
+            $table->decimal('roomy_CVL', 8, 2)->nullable();
+            $table->decimal('btl', 8, 2)->nullable();
+            $table->decimal('seed_impurities', 8, 2)->nullable();
+            $table->integer('germination_power')->nullable();
 
             $table->timestamps();
 
