@@ -215,10 +215,10 @@ $cards_in_current_page = 0;
             </div>
             <div class="container-kiri">
                 <div style="text-align: center;">
-                    {{-- <img src="{{ $item->barcode_data_uri }}" alt="Barcode" class="img-barcode"
-                        style="width: 60px; margin-bottom: 7px" /> --}}
-                    <img src="assets/img/Barcode.png" alt="Barcode" class="Barcode"
-                        style="width: 60px; margin-bottom: 7px">
+                    <img src="{{ $item->barcode_data_uri }}" alt="Barcode" class="img-barcode"
+                        style="width: 60px; margin-bottom: 7px" />
+                    {{-- <img src="assets/img/Barcode.png" alt="Barcode" class="Barcode"
+                        style="width: 60px; margin-bottom: 7px"> --}}
                 </div>
                 <div class="item">
                     <span style="display: inline-block; width: 80px; vertical-align: top;">Tgl. Akhir

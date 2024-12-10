@@ -120,13 +120,12 @@
         <div class="panel panel-info">
             <!-- Header Section -->
             <div class="panel-heading">
-                <h4>DINAS PERTANIAN DAN PERKEBUNAN</h4>
+                <h4>PT. TAMAN INOVASI AGRO NUSANTARA</h4>
             </div>
 
             <!-- Footer Section with Table -->
             <div class="panel-footer">
                 <h4><b>Informasi</b></h4>
-                <h2><b>Nomor Sertifikasi sudah terdaftar</b></h2>
                 <table id="tabel-verifikasi">
                     <tr>
                         <th>NAMA</th>

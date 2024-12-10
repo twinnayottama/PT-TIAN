@@ -21,13 +21,13 @@ class UserSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'role' => 'admin',
-                'password' => static::$password ??= Hash::make('password'),
+                'password' => static::$password ??= Hash::make('label@45758&&'),
             ],
             [
-                'name' => 'User',
-                'email' => 'user@gmail.com',
+                'name' => 'yesikaoktavilenda97',
+                'email' => 'yesikaoktavilenda97@gmail.com',
                 'role' => 'user',
-                'password' => static::$password ??= Hash::make('password'),
+                'password' => static::$password ??= Hash::make('label@45758&&'),
             ],
         ]);
     }
