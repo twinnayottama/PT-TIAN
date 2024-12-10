@@ -47,6 +47,7 @@
             padding: 20px;
             background-color: #ffffff;
             border-top: 2px solid #f1f1f1;
+            text-align: center;
         }
 
         .panel-footer h4,
@@ -78,6 +79,20 @@
             color: #333;
         }
 
+        /* Signature images container */
+        .panel-footer .ttd-container {
+            display: flex;
+            /* Use flexbox to align images */
+            justify-content: space-between;
+            /* Space images to the left and right */
+            margin-top: 20px;
+            /* Add some space between the table and signatures */
+        }
+
+        .panel-footer .ttd {
+            width: 25%;
+        }
+
         /* Responsive design */
         @media (max-width: 768px) {
 
@@ -89,6 +104,10 @@
 
             .panel-heading h4 {
                 font-size: 20px;
+            }
+
+            .panel-footer .ttd {
+                width: 20%;
             }
         }
     </style>
@@ -110,76 +129,36 @@
                 <h2><b>Nomor Sertifikasi sudah terdaftar</b></h2>
                 <table id="tabel-verifikasi">
                     <tr>
-                        <th>PROVINSI</th>
-                        <td>{{ $labels->first()->provinsi ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <th>JENIS BENIH</th>
-                        <td>{{ $labels->first()->seed_class ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
                         <th>NAMA</th>
-                        <td>{{ $labels->first()->seed_producers ?? 'N/A' }}</td>
+                        <td>PT. TAMAN INOVASI AGRO NUSANTARA</td>
                     </tr>
                     <tr>
-                        <th>ALAMAT</th>
+                        <th>ASAL BENIH</th>
                         <td>{{ $labels->first()->address ?? 'N/A' }}</td>
                     </tr>
                     <tr>
-                        <th>REALISASI LUAS</th>
-                        <td>{{ $labels->first()->contents_packaging ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <th>REALISASI PRODUKSI</th>
-                        <td>{{ $labels->first()->btl ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
                         <th>NOMOR LOT</th>
-                        <td>{{ $labels->first()->lot_id ?? 'N/A' }}</td>
+                        <td>{{ $lot->first()->lot_number ?? 'N/A' }}</td>
                     </tr>
                     <tr>
-                        <th>KELAS BENIH</th>
+                        <th>BENIH</th>
                         <td>{{ $labels->first()->seed_class ?? 'N/A' }}</td>
                     </tr>
                     <tr>
-                        <th>VARIETAS</th>
+                        <th>GALUR</th>
                         <td>{{ $labels->first()->varieties ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <th>VOLUME</th>
-                        <td>{{ $labels->first()->germination_power ?? 'N/A' }}</td>
                     </tr>
                     <tr>
                         <th>ISI KEMASAN</th>
                         <td>{{ $labels->first()->contents_packaging ?? 'N/A' }}</td>
                     </tr>
                     <tr>
-                        <th>JUMLAH</th>
-                        <td>{{ $labels->first()->pure_seeds ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <th>NO INDUK</th>
-                        <td>{{ $labels->first()->registration_number ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <th>TGL PANEN</th>
-                        <td>{{ $labels->first()->harvest_date ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <th>TGL SELESAI</th>
+                        <th>TGL SELESAI UJI</th>
                         <td>{{ $labels->first()->test_completion_date ?? 'N/A' }}</td>
                     </tr>
                     <tr>
-                        <th>HASIL UJI</th>
-                        <td>{{ $labels->first()->seed_impurities ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <th>TGL BERAKHIR</th>
-                        <td>{{ $labels->first()->end_distribution_date ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <th>NO SERI</th>
-                        <td>{{ $labels->first()->serial_number ?? 'N/A' }}</td>
+                        <th>NO SERI LABEL</th>
+                        <td>{{ $labels->first()->code_area }}{{ $labels->first()->serial_number ?? 'N/A' }}</td>
                     </tr>
                     <tr>
                         <th>KADAR AIR</th>
@@ -190,26 +169,33 @@
                         <td>{{ $labels->first()->pure_seeds ?? 'N/A' }}</td>
                     </tr>
                     <tr>
-                        <th>CVL</th>
-                        <td>{{ $labels->first()->roomy_CVL ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <th>GULMA</th>
-                        <td>{{ $labels->first()->germination_power ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <th>KOTORAN</th>
+                        <th>KOTORAN BENIH</th>
                         <td>{{ $labels->first()->seed_impurities ?? 'N/A' }}</td>
                     </tr>
                     <tr>
                         <th>DAYA BERKECAMBAH</th>
                         <td>{{ $labels->first()->germination_power ?? 'N/A' }}</td>
                     </tr>
+
                     <tr>
-                        <th>DIPERBARUI</th>
-                        <td>{{ $labels->first()->updated_at ?? 'N/A' }}</td>
+                        <th>NAMA PEMOHON</th>
+                        <td>{{ $labels->first()->seed_producers ?? 'N/A' }}</td>
                     </tr>
+                    <tr>
+                        <th>TANGGAL AKHIR LABEL</th>
+                        <td>{{ $labels->first()->end_distribution_date }}</td>
+                    </tr>
+                    {{-- <tr>
+                        <th>DIPERBARUI</th>
+                        <td>{{ $labels->first()->updated_at }}</td>
+                    </tr> --}}
                 </table>
+
+                <!-- Signature Images below the table, left and right -->
+                <div class="ttd-container">
+                    <img src="assets/img/TTD1.jpg" alt="ttd" class="ttd">
+                    <img src="assets/img/TTD2.jpg" alt="ttd" class="ttd">
+                </div>
             </div>
         </div>
     </div>

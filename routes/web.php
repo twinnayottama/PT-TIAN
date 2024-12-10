@@ -55,11 +55,11 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::delete('label/destroy/{lot_id}', [LabelController::class, 'destroy'])->name('label.destroy');
 
     // Code
-    // Route::get('code', [CodeController::class, 'index'])->name('code.index');
-    // Route::get('code/create', [CodeController::class, 'create'])->name('code.create');
-    // Route::post('code', [CodeController::class, 'import'])->name('code.import');
-    // Route::get('code/{lot}', [CodeController::class, 'show'])->name('code.show');
-    // Route::delete('code/destroy/{lot_id}', [CodeController::class, 'destroy'])->name('code.destroy');
+    Route::get('code', [CodeController::class, 'index'])->name('code.index');
+    Route::get('code/create', [CodeController::class, 'create'])->name('code.create');
+    Route::post('code', [CodeController::class, 'import'])->name('code.import');
+    Route::get('code/{lot}', [CodeController::class, 'show'])->name('code.show');
+    Route::delete('code/destroy/{lot_id}', [CodeController::class, 'destroy'])->name('code.destroy');
 });
 
 Route::get('certificate', [certificateLabel::class, 'certificate'])->name('certificate');

@@ -16,7 +16,7 @@ class Label extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id', 'user_id', 'lot_id', 'certificate_number', 'seed_producers', 'address', 'seed_class', 'type_plant', 'varieties', 'registration_number', 'harvest_date', 'test_completion_date', 'end_distribution_date', 'serial_number', 'contents_packaging', 'water_content', 'pure_seeds', 'roomy_CVL', 'btl', 'seed_impurities', 'germination_power','code_area','no_area',
+        'id', 'user_id', 'lot_id', 'certificate_number', 'seed_producers', 'address', 'seed_class', 'type_plant', 'varieties', 'registration_number', 'harvest_date', 'test_completion_date', 'end_distribution_date', 'serial_number', 'contents_packaging', 'water_content', 'pure_seeds', 'roomy_CVL', 'btl', 'seed_impurities', 'germination_power','code_area','no_area'
     ];
 
     public function user()

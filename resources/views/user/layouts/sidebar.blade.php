@@ -21,11 +21,11 @@
                 <a class="nav-link" href="{{ route('label.index') }}"><i
                         class="far fa-solid fa-tag"></i><span>Label</span></a>
             </li>
-            {{-- <li
+            <li
                 class="{{ request()->routeIs('code.index') || request()->routeIs('code.create') || request()->routeIs('code.show') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('code.index') }}"><i
                         class="far fa-solid fa-qrcode"></i><span>Qrcode</span></a>
-            </li> --}}
+            </li>
         </ul>
     </aside>
 </div>

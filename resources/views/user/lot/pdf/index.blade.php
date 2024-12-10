@@ -18,7 +18,7 @@ $cards_in_current_page = 0;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: yellow;
+            background-color: #FFE31A;
         }
 
         .card {

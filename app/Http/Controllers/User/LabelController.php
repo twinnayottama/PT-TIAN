@@ -13,32 +13,22 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class LabelController extends Controller
 {
-    // Menampilkan daftar lot dengan jumlah label yang terkait
     public function index()
-{
-    $userId = Auth::id();
+    {
+        $userId = Auth::id();
 
-    // Ensure the relationships and their names are correct
-    $lots = Lot::where('user_id', $userId)
-        ->withCount('label')  // Make sure to use 'labels' (plural)
-        ->with(['firstLabel', 'lastLabel'])  // Ensure relationships are properly defined
-        ->get();
+        $lots = Lot::where('user_id', $userId)->withCount('label')->with(['firstLabel', 'lastLabel'])->get();
+        return view('user.label.index', compact('lots'));
+    }
 
-    return view('user.label.index', compact('lots'));
-}
-
-
-    // Menampilkan halaman pembuatan label
     public function create()
     {
         return view('user.label.create');
     }
 
-    // Mengimpor data dari file Excel dan menambahkannya ke database
     public function import(Request $request)
     {
         try {
-            // Validasi input
             $request->validate([
                 'certificate_number' => 'required|string',
                 'file' => 'required|mimes:xlsx,xls,csv',
@@ -47,12 +37,10 @@ class LabelController extends Controller
             $userId = Auth::id();
             $certificateNumber = $request->input('certificate_number');
 
-            // Ambil file yang diupload
             $file = $request->file('file');
             $spreadsheet = IOFactory::load($file->getRealPath());
             $worksheet = $spreadsheet->getActiveSheet();
 
-            // Ambil data tertentu dari sheet (misalnya baris 9)
             $data = [
                 'AP9' => $worksheet->getCell('AP9')->getValue(),
                 'AZ9' => $worksheet->getCell('AZ9')->getValue(),
@@ -77,7 +65,6 @@ class LabelController extends Controller
                 'BO9' => $worksheet->getCell('BO9')->getValue(),
             ];
 
-            // Import data label ke database
             Excel::import(new DataLabelImport($userId, $certificateNumber, $data), $file);
 
             session()->flash('success', "Berhasil menambahkan data label");
@@ -88,30 +75,21 @@ class LabelController extends Controller
         }
     }
 
-    // Menampilkan detail label berdasarkan Lot
     public function show(Lot $lot)
     {
-        // Ambil data label berdasarkan lot_id
-        $labels = Label::select('id', 'serial_number', 'seed_producers', 'seed_class', 'varieties')
-            ->where('lot_id', $lot->id)
-            ->get();
-
+        $labels = Label::select('id', 'serial_number', 'seed_producers', 'seed_class', 'varieties')->where('lot_id', $lot->id)->get();
         return view('user.label.show', compact('lot', 'labels'));
     }
 
-    // Menghapus data label berdasarkan lot_id
     public function destroy($lot_id)
     {
         try {
-            // Cari Lot berdasarkan ID
             $lot = Lot::findOrFail($lot_id);
 
-            // Hapus semua label terkait dengan lot ini
             Label::where('lot_id', $lot->id)->delete();
-
-            session()->flash('success', "Berhasil menghapus data label");
+            session()->flash('success', "Berhasil menghapus data");
         } catch (\Exception $e) {
-            session()->flash('error', "Terdapat kesalahan: " . $e->getMessage());
+            session()->flash('error', "Terdapat kesalahan" . $e->getMessage());
         }
         return redirect()->back();
     }
